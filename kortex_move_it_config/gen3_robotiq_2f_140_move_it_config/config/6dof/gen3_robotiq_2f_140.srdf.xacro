@@ -10,15 +10,12 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator_and_endeffector">
+      <group name="arm" />
+      <group name="gripper" />
+    </group>
     <group name="arm">
-        <joint name="$(arg prefix)joint_1" />
-        <joint name="$(arg prefix)joint_2" />
-        <joint name="$(arg prefix)joint_3" />
-        <joint name="$(arg prefix)joint_4" />
-        <joint name="$(arg prefix)joint_5" />
-        <joint name="$(arg prefix)joint_6" />
-        <joint name="$(arg prefix)end_effector" />
-        <joint name="$(arg prefix)tool_frame_joint" />
+        <chain base_link="$(arg prefix)base_link" tip_link="$(arg prefix)end_effector" />
     </group>
     <group name="gripper">
         <joint name="$(arg prefix)gripper_base_joint" />
@@ -75,7 +72,7 @@
         <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.695" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="gripper" parent_link="$(arg prefix)base_link" group="gripper" />
+    <end_effector name="robotiq_2f_140" parent_link="$(arg prefix)end_effector" group="gripper" parent_group="arm" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
     <passive_joint name="$(arg prefix)left_inner_finger_joint" />
     <passive_joint name="$(arg prefix)left_inner_knuckle_joint" />

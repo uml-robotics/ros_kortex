@@ -14,7 +14,6 @@ controller_list:
       - $(arg prefix)joint_5
       - $(arg prefix)joint_6
       - $(arg prefix)joint_7
-
   - name: "$(arg prefix)robotiq_2f_85_gripper_controller"
     action_ns: gripper_cmd
     default: True
