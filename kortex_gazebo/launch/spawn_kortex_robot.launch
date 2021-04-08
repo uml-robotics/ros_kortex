@@ -10,7 +10,7 @@
     <!-- Initial position in Gazebo -->
     <arg name="x0" default="0"/>
     <arg name="y0" default="0"/>
-    <arg name="z0" default="0"/>
+    <arg name="z0" default="0.01"/>
 
     <!-- Arm type -->
     <arg name="arm" default="gen3"/>
@@ -45,6 +45,9 @@
 
     <!-- Delay before homing the arm -->
     <arg name="start_delay_seconds" default="10"/>
+
+    <!-- testing setting planning_group with param -->
+    <param name="planning_group" type="string" value="arm" />
 
     <group ns="$(arg robot_name)">
 
@@ -169,6 +172,11 @@
 
         <!-- Start RViz -->
         <node name="rviz" pkg="rviz" type="rviz" if="$(arg start_rviz)"/> 
+
+        <!-- Start GPD -->
+	<include file="$(find uml_hri_nerve_pick_and_place)/launch/workstation_gpd.launch" >
+	    <arg name="sim" value="false" />
+`	</include>
     
     </group>
 </launch>
