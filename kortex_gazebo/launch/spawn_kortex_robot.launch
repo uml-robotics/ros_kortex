@@ -23,6 +23,7 @@
     <arg name="gripper" default="gen3_lite_2f" if="$(eval arg('arm') == 'gen3_lite')"/>
     
     <arg name="robot_name" default="my_$(arg arm)"/>
+    <arg name="robotns" default="$(eval arg('robot_name') + '/')" />
     <arg name="prefix" default=""/>
     <arg name="namespace" default="$(arg robot_name)"/>
     <arg name="cyclic_data_publish_rate" default="40"/> <!--Hz-->
@@ -176,6 +177,7 @@
         <!-- Start GPD -->
 	<include file="$(find uml_hri_nerve_pick_and_place)/launch/workstation_gpd.launch" >
 	    <arg name="sim" value="false" />
+            <arg name="namespace" value="$(arg robotns)" />
 `	</include>
     
     </group>

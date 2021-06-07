@@ -18,6 +18,7 @@
         <chain base_link="$(arg prefix)base_link" tip_link="$(arg prefix)end_effector_link" />
     </group>
     <group name="gripper">
+	<link name="$(arg prefix)end_effector_link" />
         <joint name="$(arg prefix)gripper_base_joint" />
         <joint name="$(arg prefix)finger_joint" />
         <joint name="$(arg prefix)left_outer_finger_joint" />
@@ -76,16 +77,48 @@
         <joint name="$(arg prefix)left_inner_knuckle_joint" value="0" />
         <joint name="$(arg prefix)right_outer_knuckle_joint" value="0" />
     </group_state>
+    <group_state name="quarter" group="gripper">
+        <joint name="$(arg prefix)left_inner_finger_joint" value="0.2" />
+        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.2" />
+        <joint name="$(arg prefix)finger_joint" value="0.2" />
+        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.2" />
+        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.2" />
+        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.2" />
+    </group_state>
+    <group_state name="third" group="gripper">
+        <joint name="$(arg prefix)left_inner_finger_joint" value="0.3" />
+        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.3" />
+        <joint name="$(arg prefix)finger_joint" value="0.3" />
+        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.3" />
+        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.3" />
+        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.3" />
+    </group_state>
+    <group_state name="three_eigths" group="gripper">
+        <joint name="$(arg prefix)left_inner_finger_joint" value="0.3" />
+        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.3" />
+        <joint name="$(arg prefix)finger_joint" value="0.3" />
+        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.3" />
+        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.3" />
+        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.3" />
+    </group_state>
+    <group_state name="half" group="gripper">
+        <joint name="$(arg prefix)left_inner_finger_joint" value="0.4" />
+        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.4" />
+        <joint name="$(arg prefix)finger_joint" value="0.4" />
+        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.4" />
+        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.4" />
+        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.4" />
+    </group_state>
     <group_state name="closed" group="gripper">
-        <joint name="$(arg prefix)left_inner_finger_joint" value="0.8" />
-        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.8" />
-        <joint name="$(arg prefix)finger_joint" value="0.8" />
-        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.8" />
-        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.8" />
-        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.8" />
+        <joint name="$(arg prefix)left_inner_finger_joint" value="0.78" />
+        <joint name="$(arg prefix)right_inner_knuckle_joint" value="0.78" />
+        <joint name="$(arg prefix)finger_joint" value="0.78" />
+        <joint name="$(arg prefix)right_inner_finger_joint" value="-0.78" />
+        <joint name="$(arg prefix)left_inner_knuckle_joint" value="0.78" />
+        <joint name="$(arg prefix)right_outer_knuckle_joint" value="0.78" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="robotiq_2f_85" parent_link="$(arg prefix)end_effector_link" group="gripper" parent_group="arm" />
+    <end_effector name="end_effector" parent_link="$(arg prefix)end_effector_link" group="gripper" parent_group="arm" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
     <passive_joint name="$(arg prefix)left_inner_finger_joint" />
     <passive_joint name="$(arg prefix)left_inner_knuckle_joint" />
