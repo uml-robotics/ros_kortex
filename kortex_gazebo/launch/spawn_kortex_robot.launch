@@ -50,6 +50,11 @@
     <!-- testing setting planning_group with param -->
     <param name="planning_group" type="string" value="arm" />
 
+    <!-- Start GPD -->
+    <include file="$(find gpd_ros)/launch/ur5.launch" >
+            <arg name="namespace" value="$(arg robot_name)"/>
+    </include>
+
     <group ns="$(arg robot_name)">
 
         <!-- Load the description for the robot -->
@@ -173,12 +178,6 @@
 
         <!-- Start RViz -->
         <node name="rviz" pkg="rviz" type="rviz" if="$(arg start_rviz)"/> 
-
-        <!-- Start GPD -->
-	<include file="$(find uml_hri_nerve_pick_and_place)/launch/workstation_gpd.launch" >
-	    <arg name="sim" value="false" />
-            <arg name="namespace" value="$(arg robotns)" />
-`	</include>
     
     </group>
 </launch>
